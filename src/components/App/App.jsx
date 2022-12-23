@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Container} from './App.styled'
 import Statistics from 'components/Statistics';
 import FeedbackOptions from 'components/FeedbackOptions';
 import Section from 'components/Section';
@@ -11,13 +12,14 @@ class App extends Component {
     bad: 0,
   };
 
-  incrementFeedback = name => {
+    incrementFeedback = event => {
+        const { name } = event.target;
     this.setState(prevState => ({
       [name]: prevState[name] + 1,
     }));
   };
 
-  countPositiveFeedbackPercentage(total, good) {
+  countPositiveFeedbackPercentage = (total, good) => {
     if (!total) {
       return 0;
     }
@@ -29,14 +31,11 @@ class App extends Component {
     const { good, neutral, bad } = this.state;
     const total = good + neutral + bad;
     const increment = this.incrementFeedback;
-    const positivePercentage = this.countPositiveFeedbackPercentage(
-      total,
-      good
-    );
+    const positivePercentage = this.countPositiveFeedbackPercentage( total, good );
     const options = Object.keys(this.state);
 
     return (
-      <div>
+      <Container>
         <Section title={'Pleace leave feedback'}>
           <FeedbackOptions options={options} onLeaveFeedback={increment} />
         </Section>
@@ -54,7 +53,7 @@ class App extends Component {
         ) : (
           <Notification message={'There is no feedback'}></Notification>
         )}
-      </div>
+      </Container>
     );
   }
 }

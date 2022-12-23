@@ -1,18 +1,23 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { Wrapper, ButtonStyled } from './FeedbackOptions.styled';
 
 function FeedbackOptions({ options, onLeaveFeedback }) {
     return (
-      <div>
+      <Wrapper>
         {options.map(option => {
           return (
-            <div key={option}>
-              <button type="button" onClick={() => onLeaveFeedback(option)}>
+            <Fragment key={option}>
+              <ButtonStyled
+                type="button"
+                name={option}
+                onClick={onLeaveFeedback}
+              >
                 {option}
-              </button>
-            </div>
+              </ButtonStyled>
+            </Fragment>
           );
         })}
-      </div>
+      </Wrapper>
     );
 };
 

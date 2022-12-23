@@ -1,9 +1,10 @@
 import React from "react";
+import { MessageStyle } from "./Notification.styled";
 
 function Notification({ message }) {
     return (
       <>
-        <p>{message}</p>
+        <MessageStyle>{message}</MessageStyle>
       </>
     );
 }
