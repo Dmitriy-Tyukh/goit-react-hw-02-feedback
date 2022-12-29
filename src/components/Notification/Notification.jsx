@@ -4,9 +4,7 @@ import { MessageStyle } from "./Notification.styled";
 
 function Notification({ message }) {
     return (
-      <>
         <MessageStyle>{message}</MessageStyle>
-      </>
     );
 }
 
